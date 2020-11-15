@@ -1,9 +1,9 @@
 class Dl < Formula
   desc "A small download utility"
   homepage "https://github.com/fraserdarwent/dl"
-  url "https://github.com/fraserdarwent/dl/releases/download/0.0.6/dl-0.0.6-darwin-amd64.zip"
-  sha256 "3d1c576a35c00b600649d1b686d2e8a6fc22cc7a18f61f89fe88e982522e8377"
-  version "0.0.6"
+  url "https://github.com/fraserdarwent/dl/releases/download/0.0.10/dl-0.0.10-darwin-amd64.zip"
+  sha256 "679123b12f23bb1ced27b8f6b3f0b6a588df8bee302cde82bf6b3c6f9d84fe3d"
+  version "0.0.10"
   license "MIT"
 
   def install

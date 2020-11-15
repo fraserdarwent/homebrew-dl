@@ -10,12 +10,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download Archive
-        run: wget https://github.com/fraserdarwent/dl/releases/download/${{ github.event.client_payload }}/dl-${{ github.event.client_payload }}-darwin-amd64.zip
+        run: wget https://github.com/fraserdarwent/dl/releases/download/${{ github.event.client_payload.version.version }}/dl-${{ github.event.client_payload.version }}-darwin-amd64.zip
       - name: Update Formula
         run: |
-          export URL=https://github.com/fraserdarwent/dl/releases/download/${{ github.event.client_payload }}/dl-${{ github.event.client_payload }}-darwin-amd64.zip
-          export SHA=$(shasum -a 256 dl-${{ github.event.client_payload }}-darwin-amd64.zip | awk '{print $1}')          
-          export VERSION=${{ github.event.client_payload }}
+          export URL=https://github.com/fraserdarwent/dl/releases/download/${{ github.event.client_payload.version }}/dl-${{ github.event.client_payload.version }}-darwin-amd64.zip
+          export SHA=$(shasum -a 256 dl-${{ github.event.client_payload.version }}-darwin-amd64.zip | awk '{print $1}')          
+          export VERSION=${{ github.event.client_payload.version }}
           envsubst < template.rb > Formula/dl.rb
           cat Formula/dl.rb
       - name: Update state files

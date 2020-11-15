@@ -1,4 +1,4 @@
-lass Dl < Formula
+class Dl < Formula
   desc "A small download utility"
   homepage "https://github.com/fraserdarwent/dl"
   url "https://github.com/fraserdarwent/dl/releases/download/0.0.6/dl-0.0.6-darwin-amd64.zip"

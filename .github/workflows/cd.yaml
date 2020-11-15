@@ -1,12 +1,11 @@
 name: Continuous Deployment
-# on:
-#   repository_dispatch:
-#     types:
-#       - new-release
 on:
   push:
     branches:
-      - 'master'
+      - master
+  repository_dispatch:
+    types:
+      - new-release
 jobs:
   build:
     name: Homebrew

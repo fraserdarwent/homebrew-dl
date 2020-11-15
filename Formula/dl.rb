@@ -1,12 +1,9 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class Dl < Formula
+lass Dl < Formula
   desc "A small download utility"
   homepage "https://github.com/fraserdarwent/dl"
-  url "${URL}"
-  sha256 "${SHA}"
-  version "${VERSION}"
+  url ""
+  sha256 ""
+  version ""
   license "MIT"
 
   def install

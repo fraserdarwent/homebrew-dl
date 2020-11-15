@@ -20,9 +20,9 @@ jobs:
         run: wget https://github.com/fraserdarwent/dl/releases/download/${{ steps.version.outputs.tag }}/dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip
       - name: Update Formula
         run: |
-          URL=https://github.com/fraserdarwent/dl/releases/download/${{ steps.version.outputs.tag }}/dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip
-          SHA=$( shasum -a 256 dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip )          
-          VERSION=${{ steps.version.outputs.tag }}
+          export URL=https://github.com/fraserdarwent/dl/releases/download/${{ steps.version.outputs.tag }}/dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip
+          export SHA=$( shasum -a 256 dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip )          
+          export VERSION=${{ steps.version.outputs.tag }}
           envsubst < template.rb > Formula/dl.rb
           cat Formula/dl.rb
       - name: Update state files

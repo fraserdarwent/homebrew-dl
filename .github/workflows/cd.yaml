@@ -25,12 +25,12 @@ jobs:
           export VERSION=${{ steps.version.outputs.tag }}
           envsubst < template.rb > Formula/dl.rb
           cat Formula/dl.rb
-          rm -f *.zip
       - name: Update state files
-        uses: EndBug/add-and-commit@v4
+        uses: EndBug/add-and-commit@v5
         with:      
           author_name: GitHub Action
           author_email: action@github.com
           message: Update Formula
+          add: Formula/dl.rb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,12 +1,8 @@
 name: Continuous Deployment
-# on:
-#   repository_dispatch:
-#     types:
-#       - new-release
 on:
-  push:
-    branches:
-      - 'master'
+  repository_dispatch:
+    types:
+      - new-release
 jobs:
   build:
     name: Homebrew
@@ -27,6 +23,3 @@ jobs:
           sed -i.original "s|\${URL}|${URL}|g" Formula/dl.rb
           sed -i.original "s|\${VERSION}|${VERSION}|g" Formula/dl.rb
           cat Formula/dl.rb
-      - name: Test Formula
-        run:  |
-          brew audit --strict --new-formula --online Formula/dl.rb

@@ -1,21 +1,28 @@
 name: Continuous Deployment
+# on:
+#   repository_dispatch:
+#     types:
+#       - new-release
 on:
-  repository_dispatch:
-    types:
-      - new-release
+  push:
+    branches:
+      - 'master'
 jobs:
   build:
     name: Homebrew
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v2
+      - name: Export Version
+        id: version
+        run: echo '::set-output name=tag::0.0.6'
       - name: Download Archive
-        run: wget https://github.com/fraserdarwent/dl/releases/download/${{ github.event.client_payload.version }}/dl-${{ github.event.client_payload.version }}-darwin-amd64.zip
+        run: wget https://github.com/fraserdarwent/dl/releases/download/${{ steps.version.outputs.tag }}/dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip
       - name: Update Formula
         run: |
-          URL=dl-${{ github.event.client_payload.version }}-darwin-amd64.zip       
-          SHA=$( shasum -a 256 dl-${{ github.event.client_payload.version }}-darwin-amd64.zip )          
-          VERSION=${{ github.event.client_payload.version }}
+          URL=https://github.com/fraserdarwent/dl/releases/download/${{ steps.version.outputs.tag }}/dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip
+          SHA=$( shasum -a 256 dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip )          
+          VERSION=${{ steps.version.outputs.tag }}
           sed -i "s/\${SHA}/${SHA}/g" Formula/dl.rb
           sed -i "s/\${URL}/${URL}/g" Formula/dl.rb
           sed -i "s/\${VERSION}/${VERSION}/g" Formula/dl.rb

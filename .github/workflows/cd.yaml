@@ -23,9 +23,9 @@ jobs:
           URL=https://github.com/fraserdarwent/dl/releases/download/${{ steps.version.outputs.tag }}/dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip
           SHA=$( shasum -a 256 dl-${{ steps.version.outputs.tag }}-darwin-amd64.zip )          
           VERSION=${{ steps.version.outputs.tag }}
-          sed -i "s/\${SHA}/${SHA}/g" Formula/dl.rb
-          sed -i "s/\${URL}/${URL}/g" Formula/dl.rb
-          sed -i "s/\${VERSION}/${VERSION}/g" Formula/dl.rb
+          sed -i.original "s/\${SHA}/${SHA}/g" Formula/dl.rb
+          sed -i.original "s/\${URL}/${URL}/g" Formula/dl.rb
+          sed -i.original "s/\${VERSION}/${VERSION}/g" Formula/dl.rb
           cat Formula/dl.rb
       - name: Test Formula
         run:  |

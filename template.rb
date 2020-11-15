@@ -1,4 +1,4 @@
-lass Dl < Formula
+class Dl < Formula
   desc "A small download utility"
   homepage "https://github.com/fraserdarwent/dl"
   url "${URL}"

@@ -25,3 +25,11 @@ jobs:
           VERSION=${{ steps.version.outputs.tag }}
           envsubst < template.rb > Formula/dl.rb
           cat Formula/dl.rb
+      - name: Update state files
+        uses: EndBug/add-and-commit@v4
+        with:      
+          author_name: GitHub Action
+          author_email: action@github.com
+          message: Update Formula
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
